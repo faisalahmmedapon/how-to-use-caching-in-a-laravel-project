@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="row">
-        <h3 class="p-3 bg-black text-white text-center"> Advance Laravel Caching </h3>
+        <h3 class="p-3 bg-black text-white text-center"> Advance Laravel Caching <a class="btn btn-success" href="{{route('post.create')}}"> Add Post </a> </h3>
         @foreach($posts as $post)
         <div class="col-md-6">
             <div class="card" >

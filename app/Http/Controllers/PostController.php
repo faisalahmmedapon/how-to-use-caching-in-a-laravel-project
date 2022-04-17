@@ -14,8 +14,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts',compact('posts'));
+//        $posts = Post::all();
+
+        $data['posts'] = cache('posts',function (){
+            return Post::all();
+        });
+
+
+        return view('posts',$data);
     }
 
     /**
@@ -25,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post-create');
     }
 
     /**
@@ -36,7 +42,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->save();
+        return  redirect()->back();
+
     }
 
     /**
